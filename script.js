@@ -9,9 +9,11 @@ let productos = [
   { id: 17, nombre: "Gabinetes", categoria: "Componentes", stock: 12, precio: 26530 },
 ]
 
+let total = []
+
 let carrito = []
 
-let mensaje = "Bienvenido a tienda GCG\n1 - Productos\n2 - Agregar producto al carrito\n4 - Filtrar por categoría\n5 - Filtrar por precio\n6 - Carrito\n7 - Total y finalizar compra\n0 - SALIR"
+let mensaje = "Bienvenido a tienda GCG\n1 - Productos\n2 - Agregar producto al carrito\n3 - Filtrar por categoría \n4 - Carrito\n0 - SALIR"
 
 let opcion
 
@@ -39,17 +41,23 @@ do {
 
    
     console.log(carrito)
-  } if (opcion === 4) {
+  } if (opcion === 3) {
     let categoria = prompt("Selecciones categoria: Componentes Perisfericos Accesorios o Monitores")
     let productosFiltrados = productos.filter(producto => producto.categoria === categoria)
     alert(listar(productosFiltrados))
-  } if (opcion === 6) {
+
+    
+
+  } if (opcion === 4) {
     if (carrito.length > 0) {
-      alert(listar(carrito))
+      alert(listar2(carrito))
     } else {
       alert("Primero debe agregar productos al carrito")
     }
   }
+
+  
+  
 } while (opcion !== 0)
 
 function listar(arrayAListar) {
@@ -59,3 +67,13 @@ function listar(arrayAListar) {
   })
   return listado
 }
+
+function listar2(arrayAListar) {
+  let listado = "ID - Nombre - Precio\n"
+  arrayAListar.forEach(element => {
+    listado = listado + element.id + " - " + element.nombre + " - " + " $ " + element.precioUnitario +  "\n"
+  })
+  return listado
+}
+
+
